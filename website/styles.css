@@ -20,8 +20,10 @@
   --muted:  #98A2B3;
 
   /* Coin tuning: zoom the BSV image so its gold disc fills the round face.
-     If you see white corners, increase this slightly (2.05 -> 2.2). */
-  --bsv-zoom: 2.05;
+     The source is a gold disc on a WHITE background, so this must be large
+     enough to keep the white margin outside the circle. Increase if you ever
+     see a pale rim. (Disc is ~50% of the source frame.) */
+  --bsv-zoom: 2.35;
 
   --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
@@ -163,15 +165,10 @@ body {
    The <img> tags stay in the markup as a static fallback and are hidden. */
 .coin__face img { display: none; }
 
-/* Fallback glyph: only visible if the background image fails to load. */
-.coin__glyph {
-  position: absolute;
-  z-index: 1;
-  font-size: clamp(56px, 16vw, 92px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
+/* The old fallback glyph. It MUST stay hidden: the BSV logo is now painted as
+   the face background, so leaving this visible draws a SECOND ₿ on top of the
+   image (a ghosted/doubled logo). Prefer deleting the <span> from index.html. */
+.coin__glyph { display: none; }
 
 .coin__face--sol {
   background-color: #000;
@@ -184,7 +181,7 @@ body {
   background-color: var(--bsv-gold);
   background-image: url("/assets/bsv.jpg");
   /* Zoom past the white margin so the gold disc fills the round face.
-     Tune with --bsv-zoom in :root (2.05 = 205%). */
+     Tune with --bsv-zoom in :root (2.35 = 235%). */
   background-size: calc(var(--bsv-zoom) * 100%) calc(var(--bsv-zoom) * 100%);
   animation: face-bsv 9s steps(1, end) infinite;
 }
