@@ -17,8 +17,7 @@ The order is deliberate: **ship the half that is trustless first**, then the hal
 3. **Mainnet, redeem live, small caps.** Bonds posted, deadlines active, refund path exercised in production.
 4. **Raise caps.** Only after audits and after the invariants hold in production for a sustained period.
 
-## Milestones that matter
-
+## Milestones
 - Light client verifies mainnet BSV headers and DAA against independent reference data.
 - A deposit is minted on mainnet with no human in the loop.
 - A redemption completes end-to-end: burn → BSV payout → proof → settlement.
